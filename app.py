@@ -5,12 +5,12 @@ import pandas as pd
 # Configuração da página
 # --------------------------------------------------
 st.set_page_config(
-    page_title="Superstore Dashboard", # O título que mostra na tab do browser
-    layout="wide" # A opção "centered" coloca a página numa coluna central
+    page_title="Superst Dashboard", # O título que mostra na tab do browser
+    layout="centered" # A opção "centered" coloca a página numa coluna central
 )
 
-st.title("📊 Superstore Dashboard")
-st.markdown("Dashboard de vendas")
+st.title("📊 Super Dashboard")
+st.markdown("Dash vendas")
 
 # --------------------------------------------------
 # Carregamento dos dados
@@ -119,17 +119,33 @@ st.bar_chart(sales_by_region)
 st.divider()
 
 # --------------------------------------------------
+# Gráfico 2.1 - Vendas por Categoria
+# --------------------------------------------------
+st.subheader("🌍 Vendas por Categoria")
+
+# Agrupar a soma de Sales por Categoria
+sales_by_Category = (
+    filtered_df
+    .groupby("Category")["Sales"]
+    .sum()
+)
+
+st.bar_chart(sales_by_Category)
+
+st.divider()
+
+# --------------------------------------------------
 # Table - Top produtos
 # --------------------------------------------------
-st.subheader("🏆 Top 10 produtos por vendas")
+st.subheader("🏆 Top 15 produtos por vendas")
 
-# Agrupar a soma de Sales por Product Name, ordenar e mostrar os top 10
+# Agrupar a soma de Sales por Product Name, ordenar e mostrar os top 15
 top_products = (
     filtered_df
     .groupby("Product Name")["Sales"]
     .sum()
     .sort_values(ascending=False)
-    .head(10)
+    .head(15)
 )
 
 st.dataframe(top_products)
