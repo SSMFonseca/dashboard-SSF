@@ -119,7 +119,7 @@ st.bar_chart(sales_by_region)
 st.divider()
 
 # --------------------------------------------------
-# Gráfico 2.1 - Vendas por Categoria
+# Gráfico 2 - Vendas por Categoria
 # --------------------------------------------------
 st.subheader("🌍 Vendas por Categoria")
 
@@ -133,6 +133,27 @@ sales_by_Category = (
 st.bar_chart(sales_by_Category)
 
 st.divider()
+
+import plotly.express as px
+
+# --------------------------------------------------
+# Gráfico 3 - Vendas por Categoria
+# --------------------------------------------------
+st.subheader("🥧 Distribuição de Vendas por Categoria")
+
+sales_by_category = (
+    filtered_df
+    .groupby("Category")["Sales"]
+    .sum()
+)
+
+fig = px.pie(
+    values=sales_by_category.values,
+    names=sales_by_category.index,
+    title="Vendas por Categoria"
+)
+
+st.plotly_chart(fig, use_container_width=True)
 
 # --------------------------------------------------
 # Table - Top produtos
