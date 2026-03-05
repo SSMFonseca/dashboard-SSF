@@ -119,7 +119,7 @@ st.bar_chart(sales_by_region)
 st.divider()
 
 # --------------------------------------------------
-# Gráfico 2 - Vendas por Categoria
+# Gráfico 3 - Vendas por Categoria
 # --------------------------------------------------
 st.subheader("🌍 Vendas por Categoria")
 
@@ -134,7 +134,7 @@ st.bar_chart(sales_by_Category)
 
 st.divider()
 
-import plotly.express as px
+
 
 
 
